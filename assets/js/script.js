@@ -188,37 +188,39 @@ function hideSections() {
     }
 
     function generateText(inputText) {
-        if (inputText.includes('arte')) {
+        const lowercaseInput = inputText.toLowerCase(); // Converter para minúsculas para comparação case-insensitive
+    
+        if (lowercaseInput.includes('arte')) {
             return "A arte é uma forma de expressão que nos permite ver o mundo de maneiras únicas e criativas.";
-        } else if (inputText.includes('tecnologia')) {
+        } else if (lowercaseInput.includes('tecnologia')) {
             return "A tecnologia está sempre avançando, trazendo inovações para o nosso dia a dia.";
-        } else if (inputText.includes('gay')) {
+        } else if (lowercaseInput.includes('gay')) {
             return "A pessoa mais gay que eu conheço é a Naiara.";
-        } else if (inputText.includes('Ana Julia')) {
+        } else if (lowercaseInput.includes('ana julia')) {
             return "Ela é uma pessoa muito gata e deveria marcar pra vocês ficarem novamente.";
-        } else if (inputText.includes('joaquim')) {
+        } else if (lowercaseInput.includes('joaquim')) {
             return "O Joaquim é um viado do krl, mas ele é legal e AS VEZES da uns conselhos bons.";
-        } else if (inputText.includes('criador')) {
+        } else if (lowercaseInput.includes('criador')) {
             return "Meu criador é o Gustavo, mais conhecido como Pica Torta.";
-        } else if (inputText.includes('randola')) {
+        } else if (lowercaseInput.includes('randola')) {
             return "O leo pinto pequeno é o cara mais randola que existe nesse mundo.";
-        } else if (inputText.includes('mae')) {
+        } else if (lowercaseInput.includes('mae')) {
             return "Eu acredito que sua mãe deveria deixar você ir para revoada, mas você teria que voltar no horario certo.";
-        } else if (inputText.includes('natureza')) {
+        } else if (lowercaseInput.includes('natureza')) {
             return "A natureza nos presenteia com paisagens deslumbrantes e uma diversidade incrível de vida.";
-        } else if (inputText.includes('geovana')) {
+        } else if (lowercaseInput.includes('geovana')) {
             return "A Geovana é uma ótima amiga, parece que você ama ela.";
-        } else if (inputText.includes('mal')) {
+        } else if (lowercaseInput.includes('mal')) {
             return "Recomendo que você fale para ela ir te ver quando estiver sozinho, assim vocês poderam conversar.";
-        } else if (inputText.includes('vir')) {
+        } else if (lowercaseInput.includes('vir')) {
             return "É bem possível que sua situação piorar e você entrar em uma bad profunda por falta disso.";
-        } else if (inputText.includes('triste')) {
+        } else if (lowercaseInput.includes('triste')) {
             return "Recomendo que você peça foto do peito para sua melhor amiga, 90% das pessoas ficam triste por falta de foto do peito.";
         } else {
             return "Desculpe, não tenho informações sobre esse tema.";
         }
     }
-
+    
     function simulateTyping(text) {
         let index = 0;
         const typingEffectElement = document.getElementById('typingEffect');
@@ -238,7 +240,7 @@ function hideSections() {
                     generatedTextSection.style.display = 'block';
                 }
     
-                // Iniciar a reprodução da voz
+                
                 const utterance = new SpeechSynthesisUtterance(text);
                 speechSynthesis.speak(utterance);
             }
