@@ -222,21 +222,29 @@ function hideSections() {
     function simulateTyping(text) {
         let index = 0;
         const typingEffectElement = document.getElementById('typingEffect');
-
+        const generatedTextSection = document.getElementById('generatedTextSection'); 
+        
+    
         typingEffectElement.textContent = '';
-
+    
         const typingInterval = setInterval(() => {
             typingEffectElement.textContent += text[index];
             index++;
-
+    
             if (index >= text.length) {
                 clearInterval(typingInterval);
-
-
+    
                 if (generatedTextSection) {
                     generatedTextSection.style.display = 'block';
                 }
+    
+                // Iniciar a reprodução da voz
+                const utterance = new SpeechSynthesisUtterance(text);
+                speechSynthesis.speak(utterance);
             }
         }, 50);
     }
+    
+    
+    
 });
