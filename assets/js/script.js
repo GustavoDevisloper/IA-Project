@@ -188,9 +188,24 @@ function hideSections() {
     }
 
     function generateText(inputText) {
-        const lowercaseInput = inputText.toLowerCase(); // Converter para minúsculas para comparação case-insensitive
-    
-        if (lowercaseInput.includes('arte')) {
+        const lowercaseInput = inputText.toLowerCase();
+        
+        if (lowercaseInput === '/') {
+            return "Perguntas disponíveis:\n" +
+                "- Arte\n" +
+                "- Tecnologia\n" +
+                "- Gay\n" +
+                "- Ana Julia\n" +
+                "- Joaquim\n" +
+                "- Criador\n" +
+                "- Randola\n" +
+                "- Mae\n" +
+                "- Natureza\n" +
+                "- Geovana\n" +
+                "- Mal\n" +
+                "- Vir\n" +
+                "- Triste";
+        } else if (lowercaseInput.includes('arte')) {
             return "A arte é uma forma de expressão que nos permite ver o mundo de maneiras únicas e criativas.";
         } else if (lowercaseInput.includes('tecnologia')) {
             return "A tecnologia está sempre avançando, trazendo inovações para o nosso dia a dia.";
@@ -220,6 +235,7 @@ function hideSections() {
             return "Desculpe, não tenho informações sobre esse tema.";
         }
     }
+    
     
     function simulateTyping(text) {
         let index = 0;
