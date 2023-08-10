@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@200&display=swap');
@@ -243,4 +244,100 @@ body{
     user-select: none;
     transition: transform 0.2s ease;
     display: none;
+}
+
+.spotify {
+    display: none;
+    position: absolute;
+    top: 150px;
+    left: 390px;
+    width: 567px;
+    height: 357px;
+    border-radius: 29px;
+    background: #AC643D;
+}
+.spotify img {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+}
+.spotify h2{
+    position: absolute;
+    top: 90px;
+    left: 380px;
+    color: #FFF;
+    font-family: DM Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.9px;
+}
+.spotify h3{
+    position: absolute;
+    top: 115px;
+    left: 400px;
+    color: #B3B3B3;
+    font-family: DM Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.9px;
+}
+.spotify .back {
+    position: absolute;
+    padding: 31px;
+    left: 360px;
+    top: 180px;
+}
+.spotify .play{
+    position: absolute;
+    top: 170px;
+    left: 385px;
+}
+.spotify .next{
+    position: absolute;
+    top: 180px;
+    padding: 31px;
+    left: 430px;
+}
+.spotify .time1{
+    position: absolute;
+    top: 140px;
+    left: -95px;
+    color: #C4C4C4;
+    font-family: DM Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.56px;
+}
+.spotify .borderMusic{
+    position: absolute;
+    top: 285px;
+    left: 340px;
+    width: 173px;
+    height: 5px;
+    flex-shrink: 0;
+    border-radius: 2.5px;
+    background: #535353;
+}
+.spotify .borderMusic2{
+    position: absolute;
+    top: 276px;
+    left: 340px;
+}
+.spotify .time2{
+    position: absolute;
+    top: 140px;
+    left: 125px;
+    color: #C4C4C4;
+    font-family: DM Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.56px;
 }

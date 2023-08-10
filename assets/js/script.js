@@ -8,9 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const uploadInput = document.getElementById('uploadInput');
     const displayedImage = document.getElementById('displayedImage');
     const dragContainer = document.getElementById('dragContainer');
+    const musicPlayer = document.getElementById('musicPlayer');
+    const audioSource = document.getElementById('audioSource');
 
 
-let isDragging = false;
+    let isDragging = false;
     let startX = 0;
     let currentX = 0;
     let offsetX = 0;
@@ -28,14 +30,14 @@ let isDragging = false;
         dragContainer.style.cursor = 'grabbing';
         displayedImage.style.imageRendering = 'pixelated'; // Defina a propriedade de renderização da imagem
     });
-    
+
 
     document.addEventListener('mousemove', (event) => {
         if (!isDragging) return;
-    
+
         const diffX = event.clientX - startX;
         currentX = offsetX + diffX;
-    
+
         if (currentX < 0) {
             currentX = 0;
             displayedImage.style.imageRendering = 'pixelated';
@@ -46,14 +48,14 @@ let isDragging = false;
             const qualityScale = 1 + (4 * ((maxX - currentX) / maxX)); // Ajuste o fator 4 conforme necessário
             displayedImage.style.imageRendering = `pixelated ${qualityScale}`;
         }
-    
+
         dragContainer.style.transform = `translateX(${currentX}px)`;
     });
-        
-document.addEventListener('mouseup', () => {
-    isDragging = false;
-    dragContainer.style.cursor = 'grab';
-});
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+        dragContainer.style.cursor = 'grab';
+    });
 
     dragContainer.addEventListener('selectstart', (event) => {
         event.preventDefault();
@@ -133,8 +135,8 @@ document.addEventListener('mouseup', () => {
         const allowedFormats = ['image/png', 'image/jpeg', 'image/jpg'];
         return allowedFormats.includes(file.type);
     }
-   
-function hideSections() {
+
+    function hideSections() {
         const sections = [genCodeSection, genPhotoSection, genVideoSection, textTitle, textInput, generatedTextSection];
         sections.forEach(section => {
             if (section) {
@@ -159,12 +161,13 @@ function hideSections() {
             }
         });
     }
-    
 
-    if (textInput) {
-        textInput.addEventListener('keypress', (event) => {
-            if (event.key === 'Enter') {
-                const inputText = textInput.value.trim();
+// Event listener para processar a entrada de texto
+if (textInput) {
+    textInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            const inputText = textInput.value.trim().toLowerCase();
+                 {
                 const generatedText = generateText(inputText);
 
                 simulateTyping(generatedText);
@@ -178,18 +181,25 @@ function hideSections() {
                 if (genVideoSection) {
                     genVideoSection.style.display = 'none';
                 }
-                textInput.value = '';
             }
-        });
 
-        textInput.addEventListener('click', (event) => {
-            event.stopPropagation();
-        });
-    }
+            textInput.value = '';
+        }
+    });
 
-    function generateText(inputText) {
+    textInput.addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+}
+
+// Função para reproduzir a música
+function playSong(songFilename) {
+    const audio = new Audio(`assets/musics/${songFilename}`);
+    audio.play();
+}
+        function generateText(inputText) {
         const lowercaseInput = inputText.toLowerCase();
-        
+
         if (lowercaseInput === '/') {
             return "Perguntas disponíveis:\n" +
                 "- Arte\n" +
@@ -235,34 +245,34 @@ function hideSections() {
             return "Desculpe, não tenho informações sobre esse tema.";
         }
     }
-    
-    
+
+
     function simulateTyping(text) {
         let index = 0;
         const typingEffectElement = document.getElementById('typingEffect');
-        const generatedTextSection = document.getElementById('generatedTextSection'); 
-        
-    
+        const generatedTextSection = document.getElementById('generatedTextSection');
+
+
         typingEffectElement.textContent = '';
-    
+
         const typingInterval = setInterval(() => {
             typingEffectElement.textContent += text[index];
             index++;
-    
+
             if (index >= text.length) {
                 clearInterval(typingInterval);
-    
+
                 if (generatedTextSection) {
                     generatedTextSection.style.display = 'block';
                 }
-    
-                
+
+
                 const utterance = new SpeechSynthesisUtterance(text);
                 speechSynthesis.speak(utterance);
             }
         }, 50);
     }
-    
-    
-    
+
+
+
 });
